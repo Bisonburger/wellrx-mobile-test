@@ -1,0 +1,14 @@
+node_modules/
+.npm
+.eslintcache
+coverage
+
+logs
+*.log
+npm-debug.log*
+
+
+pids
+*.pids
+*.seed
+*.pid.lock

@@ -1,0 +1,16 @@
+{
+  "name": "wellrx-mobile-test",
+  "version": "1.0.0",
+  "description": "Mobile automation testing for WellRx Mobile platform",
+  "main": "index.js",
+  "scripts": {
+    "test": "cucumber-js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "cucumber": "^5.0.3"
+  }
+}
