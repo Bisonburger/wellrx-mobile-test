@@ -1,45 +1,31 @@
 ﻿Feature: WelcomePage
 
+ Scenario: Welcome with a valid invite code
 
-# Scenario: Welcome Page - default view and options TC1183
+    Given I start the app the first time
+    And I am on the welcome page
+    When I indicate I have an invite code
+    And I supply an invite code of "<code>"
+    Then I should be navigated to the create-account page
 
-    # :Given I installed the app the first time
-    # :When I lanuch the app
-    #  When I am on the login page
-    # Then I should be presented with following options
-    # |Options|
-    # |Yes invite code|
-    # |No invite code|
-    # |Already have an account|
+Scenario:  Welcome with an invalid invite code
 
+    Given I start the app for the first time
+    And I am on the welcome page
+    When I indicate I have an invite code
+    And I supply an invite code of "<code>"
+    Then I see an error message of invalid invite code
+    And I remain on the same page
 
- Scenario: Welcome Page - Yes Invite Code TC1184
+Scenario:  Welcome with no invite code
+    Given I start the app for the first time
+    And I am on the welcome page
+    When I indicate I do not have an invite code
+    And I navigate through the on-boarding tutorial
+    Then I am navigated to the home page
 
-    :Given I installed the app the first time
-    :When I lanuch the app
-    When I choose to move forward with an invite code
-    Then I should be navigated to the create account page
-
- Scenario: Welcome Page - No Invite Code TC1185
-
-    :Given I installed the app the first time
-    :When I lanuch the app
-    When I choose to move forward without an invite code and past on boarding tutorial screens
-    Then I should be navigated to the home page
-
-  Scenario: Welcome Page - already have an account TC1186
-
-    :Given I installed the app the first time   
-    :When I lanuch the app
-    When I am on the login page
-    Then I should be navigated to the log in page
-
-  Scenario: WelcomePage - Invalid InviteCode TC744
-    :Given I installed the app the first time
-    :When I lanuch the app
-    Given I choose to move forward with an invalid invite code
-    Then I should see an error message reads as for invalid invite code
-    """
-    Invalid invite code
-    """
- 
+Scenario:  Welcome with existing login
+    Given I start the app for the first time
+    And I am on the welcome page
+    When I indicate I have an existing login
+    Then I am navigated to the login page 
