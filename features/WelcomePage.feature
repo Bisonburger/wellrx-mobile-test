@@ -1,24 +1,25 @@
 ﻿Feature: WelcomePage
 
- Scenario Outline: Welcome with a valid invite code
+ Scenario Outline: First time with a valid invite code
 
     Given I start the app for the first time
     And I am on the "welcome" page
     When I indicate I have an invite code
     And I supply an invite code of "<code>"
-    Then I am navigated to the "create" page
+    Then I am navigated to the "create-account" page
+    And I do not see an error
 
   Examples:
     |code|
     |VALID|
 
-Scenario Outline:  Welcome with an invalid invite code
+Scenario Outline:  First time with an invalid invite code
 
     Given I start the app for the first time
     And I am on the "welcome" page
     When I indicate I have an invite code
     And I supply an invite code of "<code>"
-    Then I see an error message for "invalid invite code"
+    Then I see an error message for "invalid code"
     And I remain on the same page
 
     Examples:
@@ -26,7 +27,7 @@ Scenario Outline:  Welcome with an invalid invite code
     |INVALID|
     |BAD|
 
-Scenario:  Welcome with no invite code
+Scenario:  First time with no invite code
     Given I start the app for the first time
     And I am on the "welcome" page
     When I indicate I do not have an invite code
